@@ -25,3 +25,10 @@ rails g uploader Image
 テキスト参考にconfirm画面create
 
 controller 
+
+helper
+
+#Sessionsコントローラの作成
+rails g controller sessions new
+routing
+view new
