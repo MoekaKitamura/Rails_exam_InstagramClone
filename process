@@ -23,3 +23,5 @@ varidation,has_many,blongs_to,mount_uploader
 rails g uploader Image
 クラス定義、viewの_form変更 text_area => file_field、showのimage_tag追加
 テキスト参考にconfirm画面create
+
+controller 
