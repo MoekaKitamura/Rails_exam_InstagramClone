@@ -1,0 +1,139 @@
+body {
+    background-color: #fff;
+    color: #333;
+    margin: 33px;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+  }
+  h1{
+    padding-top: 10px;
+    text-align-last: left;
+    margin: 5px 20px;
+  }
+  
+  header{
+    text-align: left;
+    margin: 20px 20px;
+    padding-bottom: 15px;
+    font-size: 3em;
+  }
+  
+  p, ol, ul, td {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+  }
+  p.login {
+    text-align: right;
+    margin: 10px 20px;
+  }
+  pre {
+    background-color: #eee;
+    padding: 10px;
+    font-size: 11px;
+  }
+  
+  a {
+    color: #000;
+  
+    &:hover {
+      color: #000;
+      opacity: 0.4;
+      text-decoration: none;
+    }
+  }
+  .form{
+    margin: 30px;
+    padding: 20px;
+    width: 80%;
+  }
+  .field{
+    padding-bottom: 20px;
+  }
+  .bottom{
+    margin: 10px 30px;
+    padding: 0 20px;
+  }
+  table{
+    margin: 30px;
+    width: 80%;
+  }
+  .detail td{
+    height: 100px;
+  width: 150px;
+  }
+  
+  th, td {
+    padding: 10px 7px;
+    margin-bottom: 10px;
+  }
+  
+  td.name{
+    font-size: 1.5rem;
+  }
+  
+  
+  div {
+    &.field, &.actions {
+      margin-bottom: 10px;
+    }
+  }
+  
+  #notice {
+    color: green;
+    margin-left: 20px;
+  }
+  
+  #alert{
+    color: red;
+    margin-left: 20px;
+  }
+  
+  .field_with_errors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+  }
+  
+  #error_explanation {
+    width: 450px;
+    border: 2px solid red;
+    padding: 7px 7px 0;
+    margin: 20px;
+    background-color: #f0f0f0;
+  
+    h2 {
+      text-align: left;
+      font-weight: bold;
+      padding: 5px 5px 5px 15px;
+      font-size: 12px;
+      margin: -7px -7px 0;
+      background-color: #c00;
+      color: #fff;
+    }
+  
+    ul li {
+      margin-top: 5px;
+      font-size: 12px;
+      list-style: square;
+    }
+  }
+  
+  label {
+    display: block;
+  }
+  footer{
+    height: 70px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: table;
+  }
+  footer p{
+    color: #666;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+  }
+  

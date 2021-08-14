@@ -1,0 +1,22 @@
+User: name,email,password_digest, image_name / users: new create show edit update destroy
+Picture: image content user_id / pictures: new create confirm edit update index show destroy favorite
+メール
+なし / sessions: new create destroy
+Favorite: user_id picture_id /favorites: create destroy
+
+rails new InstagramClone -d postgresql
+cd InstagramClone/
+rails db:create
+初期設定いろいろ
+rails g scaffold User name:string email:string password_digest:string image_name:string
+rails g scaffold Picture image:text content:text user:references
+rails db:migrate
+bundle install
+
+routing root 'users#new'にした。
+rails s
+!? CSSない！ とりあえずFBからコピー
+
+model
+varidation,has_many,blongs_to,mount_uploader
+
