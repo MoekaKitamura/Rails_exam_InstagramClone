@@ -3,8 +3,8 @@
 <h1>About</h1>
 <div class="form">
   <div class="row">
-    <div class="col-sm-6"><%= image_tag @user.image_name.url, class: "profile"%></div>
-    <div class="col-sm-6 about">
+    <div class="col-xs-6"><%= image_tag @user.image_name.url, class: "profile"%></div>
+    <div class="col-xs-6 about">
       <p><strong>Name:</strong>
         <%= @user.name %>
       </p>
@@ -23,8 +23,8 @@
 <div class="container yourpost">
   <div class="row">
     <% current_user.pictures.order(created_at: :desc).each do |picture| %>
-      <div class="col-sm-4">
-        <%= link_to (image_tag picture.image.url), picture %>
+      <div class="col-xs-4">
+        <%= link_to (image_tag picture.image.url), picture, class: "mypics"%>
       </div>
     <% end %> 
   </div>

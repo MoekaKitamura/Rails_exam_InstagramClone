@@ -4,8 +4,9 @@
 <h1>Recent Posts</h1>
 
 <table>
-  <tbody>
+  
     <% @pictures.each do |picture| %>
+    <tbody>
       <tr>
         <td class="name"><strong><%= picture.user.name %></td></strong>
       </tr>
@@ -16,11 +17,14 @@
         <td><%= picture.content %></td>
       </tr>
       <tr>
-        <td><%= picture.created_at.strftime('%Y/%m/%d %H:%M')%></td>
-        <% if logged_in? && authenticate_user?(picture) %>
-          <td><%= link_to '•••', edit_picture_path(picture) %></td>
-        <% end %>
+        <td>
+          | <%= picture.created_at.strftime('%Y/%m/%d %H:%M')%> |
+          <% if logged_in? && authenticate_user?(picture) %>
+            <%= link_to '•••', edit_picture_path(picture) %>
+          <% end %>
+        </td>
       </tr>
+    </tbody>  
     <% end %>
-  </tbody>
+  
 </table>

@@ -11,19 +11,19 @@
   <body>
     <div class="container">
       <header><%= link_to "InstagramClone", pictures_path %></header>
-        <ul class="nav nav-tabs">
+        <ul class="nav justify-content-center">
           <li class="nav-item">
-            <%= link_to "Top", pictures_path %>
+            <%= link_to "Top", pictures_path, class: "nav-link active"%>
           </li>
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to "New Post", new_picture_path %>
+            <%= link_to "New Post", new_picture_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Profile", user_path(current_user.id) %>
+            <%= link_to "Profile", user_path(current_user.id), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Logout", session_path(current_user.id), method: :delete, data: { confirm: 'Are you sure?' }%>
+            <%= link_to "Logout", session_path(current_user.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link'%>
           </li>
         <% else %>
           <li class="nav-item">

@@ -57,8 +57,10 @@ body {
   }
   table{
     margin: 30px auto;
-    width: 80%;
-    background-color: salmon ;
+    width: 60%;
+  }
+  tbody{
+    border: solid 1px #b4b4b4;
   }
   
   .detail td{
@@ -141,12 +143,21 @@ body {
   }
 
   .profile{
-    width: 170px;
+    max-width: 170px;
   }
   .about p{
     font-size: 2rem;
     margin: 30px;
   }
+  .yourpost{
+    margin-top: 70px;
+    // min-width: 960px;
+    // margin: 0 auto;
+  }
+  // .mypics{
+  //   min-width: 320px;
+  // }
+
   //bootstrap
   .nav-item{
     font-size: 1.4rem;
@@ -163,8 +174,7 @@ body {
   .container{
     position: relative;
     padding-bottom: 70px;
-    min-height: 100vh
+    min-height: 100vh;
+    box-sizing: border-box;
   }
-  .yourpost{
-    margin-top: 70px;
-  }
+  

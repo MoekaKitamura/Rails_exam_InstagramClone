@@ -39,5 +39,11 @@
     <div class="actions">
       <%= form.submit "Create my account" %>
     </div>
+    <br>
+    <% unless logged_in? %>
+      <div>
+        Already have an account? <%= link_to "Log in here", new_session_path %>
+      </div>
+    <% end %>
   </div>
 <% end %>
