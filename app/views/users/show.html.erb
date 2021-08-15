@@ -2,40 +2,30 @@
 
 <h1>About</h1>
 <div class="form">
-  <p>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </p>
-  <br>
-  <%= link_to 'Edit Profile', edit_user_path(@user) %> |
-  <%= link_to 'Delete Your Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <div class="row">
+    <div class="col-sm-6"><%= image_tag @user.image_name.url, class: "profile"%></div>
+    <div class="col-sm-6 about">
+      <p><strong>Name:</strong>
+        <%= @user.name %>
+      </p>
+      <p><strong>Email:</strong>
+      <%= @user.email %>
+      </p>
+      <p>
+        <%= link_to 'Edit Profile', edit_user_path(@user) %> |
+        <%= link_to 'Delete Your Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
+    </div>
+  </div>
 </div>
 
 <h1>Your Posts</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Content</th>
-      <th>Posted at</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container yourpost">
+  <div class="row">
     <% current_user.pictures.order(created_at: :desc).each do |picture| %>
-      <tr>
-        <td><%= link_to (image_tag picture.image.url), picture %></td>
-        <td><%= picture.content %></td>
-        <td><%= picture.created_at.strftime('%Y/%m/%d %H:%M')%></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="col-sm-4">
+        <%= link_to (image_tag picture.image.url), picture %>
+      </div>
+    <% end %> 
+  </div>
+</div>

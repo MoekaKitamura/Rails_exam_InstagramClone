@@ -46,6 +46,8 @@ body {
     padding: 20px;
     width: 80%;
   }
+  
+
   .field{
     padding-bottom: 20px;
   }
@@ -138,6 +140,13 @@ body {
     display: table-cell;
   }
 
+  .profile{
+    width: 170px;
+  }
+  .about p{
+    font-size: 2rem;
+    margin: 30px;
+  }
   //bootstrap
   .nav-item{
     font-size: 1.4rem;
@@ -155,4 +164,7 @@ body {
     position: relative;
     padding-bottom: 70px;
     min-height: 100vh
+  }
+  .yourpost{
+    margin-top: 70px;
   }

@@ -7,11 +7,15 @@
   <tbody>
     <% @pictures.each do |picture| %>
       <tr>
-        <td colspan="4" class="name"><strong><%= picture.user.name %></td></strong>
+        <td class="name"><strong><%= picture.user.name %></td></strong>
       </tr>
       <tr>
         <td><%= link_to (image_tag picture.image.url), picture %></td>
+      </tr>
+      <tr>
         <td><%= picture.content %></td>
+      </tr>
+      <tr>
         <td><%= picture.created_at.strftime('%Y/%m/%d %H:%M')%></td>
         <% if logged_in? && authenticate_user?(picture) %>
           <td><%= link_to '•••', edit_picture_path(picture) %></td>
