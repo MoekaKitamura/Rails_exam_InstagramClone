@@ -45,6 +45,16 @@ user＃showはbootstrap使ってinstaっぽく横3枚ずつの一覧に
 
 プロフィール画像 ImageUploaderをuserにも適用
 
+いいね機能
+rails g model favorite user:references picture:references
+rails db:migrate
+app/models/user.rb に has_many :favorites, dependent: :destroy
+app/models/picture.rb に has_many :favorites, dependent: :destroy と、
+has_many :favorite_users, through: :favorites, source: :user
+rails g controller favorites
+rouing create, destroy
+
+-------------------------------
 new postのファイル選択が真ん中にいかない
 ナブタブ bootstrapが横並びにならない
 
