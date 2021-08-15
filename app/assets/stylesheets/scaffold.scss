@@ -5,15 +5,13 @@ body {
     font-family: verdana, arial, helvetica, sans-serif;
     font-size: 13px;
     line-height: 18px;
+    text-align: center;
   }
   h1{
     padding-top: 10px;
-    text-align-last: left;
-    margin: 5px 20px;
   }
   
   header{
-    text-align: left;
     margin: 20px 20px;
     padding-bottom: 15px;
     font-size: 3em;
@@ -44,7 +42,7 @@ body {
     }
   }
   .form{
-    margin: 30px;
+    margin: 30px auto;
     padding: 20px;
     width: 80%;
   }
@@ -56,12 +54,14 @@ body {
     padding: 0 20px;
   }
   table{
-    margin: 30px;
+    margin: 30px auto;
     width: 80%;
+    background-color: #c00;
   }
+  
   .detail td{
     height: 100px;
-  width: 150px;
+    // width: 150px;
   }
   
   th, td {
@@ -73,7 +73,6 @@ body {
     font-size: 1.5rem;
   }
   
-  
   div {
     &.field, &.actions {
       margin-bottom: 10px;
@@ -82,15 +81,14 @@ body {
   
   #notice {
     color: green;
-    margin-left: 20px;
   }
   
   #alert{
     color: red;
-    margin-left: 20px;
   }
   
   .field_with_errors {
+    margin: 0 auto;
     padding: 2px;
     background-color: red;
     display: table;
@@ -100,7 +98,7 @@ body {
     width: 450px;
     border: 2px solid red;
     padding: 7px 7px 0;
-    margin: 20px;
+    margin: 20px auto;
     background-color: #f0f0f0;
   
     h2 {
@@ -117,12 +115,14 @@ body {
       margin-top: 5px;
       font-size: 12px;
       list-style: square;
+      text-align: left;
     }
   }
   
   label {
     display: block;
   }
+
   footer{
     height: 70px;
     width: 100%;
@@ -130,10 +130,29 @@ body {
     bottom: 0;
     display: table;
   }
+
   footer p{
     color: #666;
     text-align: center;
     vertical-align: middle;
     display: table-cell;
   }
-  
+
+  //bootstrap
+  .nav-item{
+    font-size: 1.4rem;
+  }
+
+  button.btn{
+    border-radius: 45%;
+  }
+
+  button.btn a :hover{
+    background-color: #333;
+  }
+
+  .container{
+    position: relative;
+    padding-bottom: 70px;
+    min-height: 100vh
+  }

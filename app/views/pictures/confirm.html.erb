@@ -1,11 +1,31 @@
-<h1>確認画面</h1>
-<%= form_with(model: @feed, url: feeds_path, local: true) do |form| %>
-  <!-- 確認画面でアップロードした画像を表示させるための記述 -->
-  <%= image_tag(@feed.image.url) if @feed.image && @feed.image.url %>
-  <%= form.hidden_field :image_cache %>
-  <%= form.submit "投稿する" %>
+<h1>Confirmation</h1>
+<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+  <div class="form">
+  <p>Are you sure you want to publish this post?</p><br>
+    <div class="field">
+      <%= form.label :image %>
+      <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+      <%= form.hidden_field :image_cache %>
+      <%= form.hidden_field :content%>
+    </div>
+    <div class="field">
+      <%= form.label :content %>
+      <p><%= @picture.content %></p>
+    </div>
+    
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  </div>
 <% end %>
-<%= form_with(model:@feed, url:new_feed_path, local:true, method:"get") do |form| %>
-  <%= form.hidden_field :image_cache %>
-  <%= form.submit "戻る", name: "back" %>
+<%= form_with(model:@picture, url:new_picture_path, local:true, method:"get") do |form| %>
+  <div class="form">
+    <div class="field">
+      <%= form.hidden_field :image_cache %>
+      <%= form.hidden_field :content%>
+    </div>
+    <div class="actions">
+      <%= form.submit "Back", name: "back" %>
+    </div>
+  </div>
 <% end %>

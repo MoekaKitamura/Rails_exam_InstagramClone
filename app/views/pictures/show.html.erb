@@ -1,19 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @picture.image.url %>
-</p>
+<h1>Detail</h1>
+  <table class="detail">
+    <tr>
+      <td><strong>User:</strong></td>
+      <td><%= @picture.user.name %></td>
+      <td colspan="4"></td>
+    </tr>
+    <tr>
+      <td><strong>Image:</strong></td>
+      <td><%= image_tag @picture.image.url %></td>
+    </tr>
+    <tr>
+      <td><strong>Content:</strong></td>
+      <td><%= @picture.content %></td>
+    </tr>
+    <tr>
+      <td><strong>Posted at:</strong></td>
+      <td><%= @picture.created_at.strftime('%Y/%m/%d %H:%M')%></td>
+    </tr>
+  </table>
 
-<p>
-  <strong>Content:</strong>
-  <%= @picture.content %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @picture.user %>
-</p>
-
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+<% if logged_in? && authenticate_user?(@picture) %>
+  <p class="bottom"><%= link_to 'Edit', edit_picture_path(@picture) %> |
+  <%= link_to 'Delete', @picture, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>

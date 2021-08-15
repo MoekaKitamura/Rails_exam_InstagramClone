@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'sessions/new'
   root 'users#new'
-  resources :sessions only[:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
   resources :pictures do
     collection do
       post :confirm

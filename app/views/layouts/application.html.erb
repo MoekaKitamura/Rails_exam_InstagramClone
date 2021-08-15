@@ -4,12 +4,41 @@
     <title>InstagramClone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <header><%= link_to "InstagramClone", pictures_path %></header>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <%= link_to "Top", pictures_path %>
+          </li>
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to "New Post", new_picture_path %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Profile", user_path(current_user.id) %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Logout", session_path(current_user.id), method: :delete, data: { confirm: 'Are you sure?' }%>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_path %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Login", new_session_path %>
+          </li>
+        <% end %>
+        </ul>
+        <% if logged_in? %>
+          <p class="login">Logged in as <strong> <%= link_to current_user.name, user_path(current_user.id) %></strong></p>
+        <% end %>
+        <%= yield %>
+        <footer><p>Copyright ©︎ 2021 DIVE INC ALL RIGHTS RESERVED.</p></footer>
+    </div>
   </body>
 </html>

@@ -31,4 +31,17 @@ helper
 #Sessionsコントローラの作成
 rails g controller sessions new
 routing
-view new
+
+#set bootstrap
+$ yarn add jquery
+app/assets/javascript/application.js に //= require jquery/dist/jquery.js (require_tree .の前)
+$ yarn add bootstrap@3
+app/assets/stylesheets/application.css に *= require bootstrap/dist/css/bootstrap.min (require_tree .の前)
+app/assets/javascript/application.js に //= require bootstrap/dist/js/bootstrap.min (require_tree .の前)
+
+view
+new postのファイル選択が真ん中にいかない
+プロフィール画像
+ナブタブ
+table 縦書きに。
+imageを正方形に切り取る

@@ -1,19 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<h1>About</h1>
+<div class="form">
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+  <br>
+  <%= link_to 'Edit Profile', edit_user_path(@user) %> |
+  <%= link_to 'Delete Your Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
+<h1>Your Posts</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Content</th>
+      <th>Posted at</th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <tbody>
+    <% current_user.pictures.order(created_at: :desc).each do |picture| %>
+      <tr>
+        <td><%= link_to (image_tag picture.image.url), picture %></td>
+        <td><%= picture.content %></td>
+        <td><%= picture.created_at.strftime('%Y/%m/%d %H:%M')%></td>
+        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+        <td><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
