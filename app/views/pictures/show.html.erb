@@ -23,11 +23,7 @@
 
   <p>
     <%= link_to favorite_picture_path(@picture.id) do %>
-      <% if @picture.favorites.count <= 1 %>
-        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= @picture.favorites.count %> like
-      <% else %>
-        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= @picture.favorites.count %> likes
-      <% end %>
+      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= pluralize(@picture.favorites.count, "like", locale: :en)%>
     <% end %>
   </p>
 

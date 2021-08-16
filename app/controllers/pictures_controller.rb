@@ -10,7 +10,7 @@ class PicturesController < ApplicationController
   end
 
   def favorite
-  
+ 
   end
 
   def new

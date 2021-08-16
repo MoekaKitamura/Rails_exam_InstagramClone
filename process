@@ -54,11 +54,13 @@ has_many :favorite_users, through: :favorites, source: :user
 rails g controller favorites
 rouing create, destroy
 indexとshow画面にいいね数を表示、リンクでいいねした人を表示するページへ
-いいねが0-1 => like, いいねが2以上 => likes
+pluralizeメソッド使って、いいねが2以上 => likes
+お気に入りした人のユーザー一覧表示
+
+プロフィール画像デフォルト設定
 -------------------------------
 
-
-お気に入りした人の一覧 いないとき、リンク消す
-
-プロフィール画像はあとで設定したい
-indexにプロフィール画面
+indexにプロフィール画面表示
+メール機能
+seed
+デフォルト画像がNewPostに出てるの修正したい
