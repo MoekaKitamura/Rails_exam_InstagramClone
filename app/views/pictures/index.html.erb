@@ -18,13 +18,27 @@
       </tr>
       <tr>
         <td>
+        
+          <%= link_to favorite_picture_path(picture.id) do %>
+            <% if picture.favorites.count <= 1 %>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= picture.favorites.count %> like
+            <% else %>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= picture.favorites.count %> likes
+            <% end %>
+          <% end %>
+        
+        </td>
+      </tr>
+      <tr>
+        <td>
           | <%= picture.created_at.strftime('%Y/%m/%d %H:%M')%> |
           <% if logged_in? && authenticate_user?(picture) %>
-            <%= link_to '•••', edit_picture_path(picture) %>
+            <%= link_to edit_picture_path(picture) do %>
+              <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+            <% end %>
           <% end %>
         </td>
       </tr>
     </tbody>  
     <% end %>
-  
 </table>

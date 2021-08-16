@@ -17,7 +17,12 @@
       <%= form.text_field :name %>
     </div>
 
-    <%= form.file_field :image_name %>
+    
+
+    <div class="field">
+      <%= form.label "profile image" %>
+      <%= form.file_field :image_name, class: "filefield" %>
+    </div>
 
     <div class="field">
       <%= form.label :email %>

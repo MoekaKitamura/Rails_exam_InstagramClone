@@ -53,11 +53,12 @@ app/models/picture.rb に has_many :favorites, dependent: :destroy と、
 has_many :favorite_users, through: :favorites, source: :user
 rails g controller favorites
 rouing create, destroy
-
+indexとshow画面にいいね数を表示、リンクでいいねした人を表示するページへ
+いいねが0-1 => like, いいねが2以上 => likes
 -------------------------------
-new postのファイル選択が真ん中にいかない
-ナブタブ bootstrapが横並びにならない
+
+
+お気に入りした人の一覧 いないとき、リンク消す
 
 プロフィール画像はあとで設定したい
 indexにプロフィール画面
-何人がお気に入りしたか
