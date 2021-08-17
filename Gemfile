@@ -26,6 +26,7 @@ group :development, :test do
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'dotenv-rails'
+  gem 'faker'
 end
 
 group :development do

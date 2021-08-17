@@ -64,8 +64,15 @@ rails g mailer PostMailer post_mailer
 default 自分のメールアドレス
 メソッド定義、コントローラー(post,picture),view
 letter_opener_web
+
+seedに50件ダミー投入
+
 -------------------------------
 
+メールのheroku設定
 indexにプロフィール画面表示
-seed、ja.yml
+ja.yml
 デフォルト画像がNewPostに出てるの修正したい
+11. pictureをお気に入りし、お気に入りのpictureの一覧画面を、新しいルーティングのページで作成すること
+17. .envファイルを作成し、それをGitに上げないようにする設定をしておくこと
+18. 辞書ファイルで、エラーメッセージやモデル名などの国際化がされていること
