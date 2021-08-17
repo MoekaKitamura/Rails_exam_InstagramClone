@@ -26,7 +26,7 @@
             <%= link_to "Logout", session_path(current_user.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'nav-link'%>
           </li>
         <% else %>
-          <li class="nav-item"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></li>
+          <li class="nav-item"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></li>
           <li class="nav-item">
             <%= link_to "Sign up", new_user_path %>
           </li>

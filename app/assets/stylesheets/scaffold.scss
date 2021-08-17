@@ -19,7 +19,7 @@ body {
   
   p, ol, ul, td {
     font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 18px;
   }
   p.login {
@@ -44,7 +44,7 @@ body {
   .form{
     margin: 30px auto;
     padding: 20px;
-    width: 80%;
+    max-width: 600px;
   }
 
   .field{
@@ -72,7 +72,15 @@ body {
   
   .detail td{
     height: 100px;
-    // width: 150px;
+  }
+  .detail{
+    max-width: 600px;
+  }
+  .favorite td{
+    height: 70px;
+  }
+  td.liked{
+    color: red;
   }
   
   th, td {
@@ -178,7 +186,7 @@ body {
     width: 25%;
   }
   .justify-content-center{
-    width: 50%;
+    max-width: 600px;
     margin: 0 auto;
   }
 

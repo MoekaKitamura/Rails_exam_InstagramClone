@@ -3,13 +3,16 @@
 <h1>About</h1>
 <div class="form">
   <div class="row">
-    <div class="col-xs-6 about"><%= image_tag @user.image_name.url, class: "profile"%></div>
-    <div class="col-xs-6 about">
+    <div class="col-sm-6 about"><%= image_tag @user.image_name.url, class: "profile"%></div>
+    <div class="col-sm-6 about">
       <p><strong>Name:</strong>
         <%= @user.name %>
       </p>
       <p><strong>Email:</strong>
       <%= @user.email %>
+      <%= link_to letter_opener_web_path do %>
+        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+      <% end %>
       </p>
       <p>
         <%= pluralize(current_user.pictures.count, "post", locale: :en) %> |
@@ -21,6 +24,7 @@
         <%= link_to 'Edit Profile', edit_user_path(@user) %> |
         <%= link_to 'Delete Your Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
       </p>
+      
     </div>
   </div>
 </div>
@@ -29,7 +33,7 @@
 <div class="container">
   <div class="row">
     <% current_user.pictures.order(created_at: :desc).each do |picture| %>
-      <div class="col-xs-4">
+      <div class="col-sm-4">
         <%= link_to (image_tag picture.image.url), picture, class: "userposts"%>
       </div>
     <% end %> 
