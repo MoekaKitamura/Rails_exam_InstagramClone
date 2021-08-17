@@ -58,6 +58,7 @@ pluralizeメソッド使って、いいねが2以上 => likes
 お気に入りした人のユーザー一覧表示 中身がある時のみのコードは、if @picture.favorite_users.present?でOK
 
 プロフィール画像デフォルト設定
+→もうひとつuploader作ってmodelごと、設定を分けた。
 
 メール機能
 rails g mailer PostMailer post_mailer
@@ -75,12 +76,13 @@ userがいいねしたpictureの一覧ページ作成
 プロフィール編集で、今の画像が出るようにした。
 
 indexにプロフィール画面アイコン表示
+
+
 -------------------------------
 
 Q,
-メールのheroku設定 pushできん
+メールのheroku設定
 model.ja.yml ログイン画面のみ変わらない。
-デフォルト画像がNewPostに出てるの修正したい(別モデルでの時は各uploaderファイルの作成が必要？？)
 選択した画像見えるようにするならJS？
 user show page レスポンシブ的にOK？？
 
