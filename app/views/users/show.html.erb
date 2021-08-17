@@ -12,6 +12,12 @@
       <%= @user.email %>
       </p>
       <p>
+        <%= pluralize(current_user.pictures.count, "post", locale: :en) %> |
+        <%= link_to favorite_user_path(@user) do %>
+          <%= pluralize(current_user.favorite_pictures.count, "like", locale: :en) %>
+        <% end %> 
+      </p>
+      <p>
         <%= link_to 'Edit Profile', edit_user_path(@user) %> |
         <%= link_to 'Delete Your Account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
       </p>
