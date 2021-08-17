@@ -1,8 +1,8 @@
 User: name,email,password_digest, image_name / users: new create show edit update destroy
 Picture: image content user_id / pictures: new create confirm edit update index show destroy favorite
-メール
 なし / sessions: new create destroy
 Favorite: user_id picture_id /favorites: create destroy
+ActionMailer
 
 rails new InstagramClone -d postgresql
 cd InstagramClone/
@@ -67,12 +67,14 @@ letter_opener_web
 
 seedに50件ダミー投入
 
+.envファイル作成、.gitignoreに追加
+model.ja.ymlに日本語名追加
 -------------------------------
 
-メールのheroku設定
+メールのheroku設定 pushできん
+model.ja.yml ログイン画面のみ変わらない。
+
 indexにプロフィール画面表示
-ja.yml
 デフォルト画像がNewPostに出てるの修正したい
 11. pictureをお気に入りし、お気に入りのpictureの一覧画面を、新しいルーティングのページで作成すること
-17. .envファイルを作成し、それをGitに上げないようにする設定をしておくこと
-18. 辞書ファイルで、エラーメッセージやモデル名などの国際化がされていること
+選択した画像見えるようにならんかなあ
