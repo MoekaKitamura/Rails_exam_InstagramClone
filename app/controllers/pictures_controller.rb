@@ -29,6 +29,7 @@ class PicturesController < ApplicationController
     @picture = Picture.new(picture_params)
     @picture.user_id = current_user.id
     if @picture.save
+      PostMailer.post_mailer(@picture).deliver
       redirect_to @picture, notice: "Your post was successfully created."
     else
       render :new, status: :unprocessable_entity
