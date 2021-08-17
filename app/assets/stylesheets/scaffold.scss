@@ -26,11 +26,11 @@ body {
     text-align: right;
     margin: 10px 20px;
   }
-  pre {
-    background-color: #eee;
-    padding: 10px;
-    font-size: 11px;
-  }
+  // pre {
+  //   background-color: #eee;
+  //   padding: 10px;
+  //   font-size: 11px;
+  // }
   
   a {
     color: #000;
@@ -46,11 +46,11 @@ body {
     padding: 20px;
     width: 80%;
   }
-  
 
   .field{
     padding-bottom: 20px;
   }
+
   .filefield{
     width: 200px;
     margin: 30px auto;
@@ -60,10 +60,12 @@ body {
     margin: 10px 30px;
     padding: 0 20px;
   }
+
   table{
     margin: 30px auto;
     width: 60%;
   }
+  
   tbody{
     border: solid 1px #b4b4b4;
   }
@@ -79,7 +81,8 @@ body {
   }
   
   td.name{
-    font-size: 1.5rem;
+    font-size: 2rem;
+    padding: 20px;
   }
   
   div {
@@ -147,21 +150,26 @@ body {
     display: table-cell;
   }
 
-  .profile{
-    max-width: 170px;
+  .icon{
+    width: 30px;
+    border-radius: 50%;
+    border: solid 1px #b4b4b4;
   }
+  
+  .profile{
+    width: 170px;
+  }
+
   .about p{
     font-size: 2rem;
     margin: 30px;
   }
-  .yourpost{
-    margin-top: 70px;
-    // min-width: 960px;
-    // margin: 0 auto;
+  
+  .userposts img{
+    max-width: 320px;
+    max-height: 320px;
+    margin:  30px 10px;
   }
-  // .mypics{
-  //   min-width: 320px;
-  // }
 
   //bootstrap
   .nav-item{
@@ -173,7 +181,6 @@ body {
     width: 50%;
     margin: 0 auto;
   }
-
 
   .btn{
     border-radius: 15px;

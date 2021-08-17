@@ -8,7 +8,9 @@
     <% @pictures.each do |picture| %>
     <tbody>
       <tr>
-        <td class="name"><strong><%= picture.user.name %></td></strong>
+        <td class="name">
+          <%= image_tag picture.user.image_name.url , class: "icon" if picture.user.image_name.present? %> 
+          <strong><%= picture.user.name %></td></strong>
       </tr>
       <tr>
         <td><%= link_to (image_tag picture.image.url), picture %></td>

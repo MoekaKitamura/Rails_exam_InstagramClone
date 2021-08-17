@@ -17,10 +17,11 @@
       <%= form.text_field :name %>
     </div>
 
-    
-
     <div class="field">
       <%= form.label :image_name %>
+      <% if user.image_name.present? %>
+        <%= image_tag user.image_name.url %>
+      <% end %>
       <%= form.file_field :image_name, class: "filefield" %>
     </div>
 
