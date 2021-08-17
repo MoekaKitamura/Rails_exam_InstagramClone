@@ -8,9 +8,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   #デフォルト画像の設定
-  # def default_url(*args)
-    # "default.png"
-  # end
+  def default_url(*args)
+    "default.png"
+  end
 end
 
 class IconUploader < CarrierWave::Uploader::Base
