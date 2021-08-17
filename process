@@ -85,4 +85,5 @@ Q,
 model.ja.yml ログイン画面のみ変わらない。
 選択した画像見えるようにするならJS？
 user show page レスポンシブ的にOK？？
+herokuでbootstrapがきいてない？？
 
