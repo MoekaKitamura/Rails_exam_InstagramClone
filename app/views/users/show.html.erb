@@ -10,8 +10,10 @@
       </p>
       <p><strong>Email:</strong>
       <%= @user.email %>
-      <%= link_to letter_opener_web_path do %>
-        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+      <% if Rails.env.development? %>
+        <%= link_to letter_opener_web_path do %>
+          <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+        <% end %>
       <% end %>
       </p>
       <p>
