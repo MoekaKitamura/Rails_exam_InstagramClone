@@ -5,12 +5,12 @@
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
   <div class="form">
     <div class="field">
-      <%= f.label :email %>
+      <%= f.label t :email %>
       <%= f.email_field :email %>
     </div>
 
     <div class="field">
-      <%= f.label :password %>
+      <%= f.label t :password %>
       <%= f.password_field :password %>
       <p>*Password must be at least 6 characters long.</p>
     </div>

@@ -82,7 +82,6 @@ indexにプロフィール画面アイコン表示
 
 Q,
 メールのheroku設定
-model.ja.yml ログイン画面のみ変わらない。
 選択した画像見えるようにするならJS？
 user show page レスポンシブ的にOK？？
 herokuでbootstrapがきいてない？？
