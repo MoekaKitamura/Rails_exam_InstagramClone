@@ -1,0 +1,23 @@
+<h1><%= @user.name%>'s relationship</h1>
+<table>
+  <td colspan="2">following</td>
+  <% @following.each do |user| %>
+  <tr>
+    <td><%= user.name %>
+    <%= link_to "👀", user_path(user.id)%></td>
+    <!---フォローボタンのパーシャル _follow_form.html.erb --->
+    <td><%= render 'follow_form', user: user %></td>
+  </tr>
+  <% end %>
+</table>
+<table>
+  <td colspan="2">followers</td>
+  <% @followers.each do |user| %>
+  <tr>
+    <td><%= user.name %>
+    <%= link_to "👀", user_path(user.id)%></td>
+    <!---フォローボタンのパーシャル _follow_form.html.erb --->
+    <td><%= render 'follow_form', user: user %></td>
+  </tr>
+  <% end %>
+  </table> 

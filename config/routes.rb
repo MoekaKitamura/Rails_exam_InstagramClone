@@ -18,11 +18,14 @@ Rails.application.routes.draw do
     member do
       get :favorite
     end
+    member do
+      get :relationship
+    end
   end
 
   resources :favorites, only: [:create, :destroy]
   mount LetterOpenerWeb::Engine, at: "/inbox" if Rails.env.development?
 
   resources :relationships, only: [:create, :destroy]
-  
+
 end

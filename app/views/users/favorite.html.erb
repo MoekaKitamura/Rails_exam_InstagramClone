@@ -1,7 +1,7 @@
-<h1>Your Favorites</h1>
+<h1><%= @user.name%>'s Favorites</h1>
 <div class="container">
   <div class="row">
-    <% current_user.favorite_pictures.order(created_at: :desc).each do |picture| %>
+    <% @user.favorite_pictures.order(created_at: :desc).each do |picture| %>
       <div class="col-xs-4">
         <%= link_to (image_tag picture.image.url), picture, class: "userposts"%>
       </div>

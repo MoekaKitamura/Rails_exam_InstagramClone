@@ -1,7 +1,11 @@
- <h2>Users</h2>
+ <h1>Users</h1>
+ <table>
   <% @users.each do |user| %>
-    <p>☻<%= user.name %></p>
+  <tr>
+    <td><%= user.name %>
+    <%= link_to "👀", user_path(user.id)%></td>
     <!---フォローボタンのパーシャル _follow_form.html.erb --->
-    <%= render 'follow_form', user: user %>
-    <br> 
+    <td><%= render 'follow_form', user: user %></td>
+  </tr>
   <% end %>
+  </table> 

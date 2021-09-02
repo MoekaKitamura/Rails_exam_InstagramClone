@@ -3,7 +3,18 @@
 <h1>About</h1>
 <div class="aboutarea">
   <div class="row">
-    <div class="col-sm-6 about"><%= image_tag @user.image_name.url, class: "profile"%></div>
+    <div class="col-sm-6 about">
+      <%= image_tag @user.image_name.url, class: "profile"%> <br>
+      <p>
+        <%= link_to relationship_user_path(@user) do %>
+            <%= @following.count %> following |
+        <% end %> 
+        <%= link_to relationship_user_path(@user) do %>
+            <%= pluralize(@followers.count, "follower", locale: :en) %>
+        <% end %>
+      </p>
+    </div>
+
     <div class="col-sm-6 about">
       <p><strong>Name:</strong>
         <%= @user.name %>
@@ -17,9 +28,9 @@
       <% end %>
       </p>
       <p>
-        <%= pluralize(current_user.pictures.count, "post", locale: :en) %> |
+        <%= pluralize(@user.pictures.count, "post", locale: :en) %> |
         <%= link_to favorite_user_path(@user) do %>
-          <%= pluralize(current_user.favorite_pictures.count, "like", locale: :en) %>
+          <%= pluralize(@user.favorite_pictures.count, "like", locale: :en) %>
         <% end %> 
       </p>
       <p>
@@ -31,10 +42,10 @@
   </div>
 </div>
 
-<h1>Your Posts</h1>
+<h1><%= @user.name%>'s Posts</h1>
 <div class="container">
   <div class="row">
-    <% current_user.pictures.order(created_at: :desc).each do |picture| %>
+    <% @user.pictures.order(created_at: :desc).each do |picture| %>
       <div class="col-sm-4">
         <%= link_to (image_tag picture.image.url), picture, class: "userposts"%>
       </div>
