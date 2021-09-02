@@ -45,8 +45,6 @@
   </div>
   <!-- コメント入力欄をブログの詳細ページに表示するためのrender パーシャルを表示 comments/_form.html.erb -->
   <%= render partial: 'comments/form', locals: { comment: @comment, picture: @picture } %>
-  <%= link_to '編集', edit_picture_path(@picture) %> |
-  <%= link_to '戻る', pictures_path %>
 </div>
 
 <% if logged_in? && authenticate_user?(@picture) %>

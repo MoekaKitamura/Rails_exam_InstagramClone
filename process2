@@ -23,3 +23,6 @@ JavaScriptのリクエストはformat.js（remote: true)デフォルト => index
 投稿詳細ページ編集
 コメント一覧と、コメント入力フォームをパーシャル化！
 pictures_controllerのshowにコメント作成と一覧表示できるよう、追加
+
+index.js.erb JS形式のview
+blogs/show.html.erbでid=comments_areaとで定義したdivの中を書き換えるjQueryを記述
