@@ -1,4 +1,4 @@
-Ajax コメント機能
+🧡Ajax コメント機能
 
 ルーティング追加
 resources :pictures do
@@ -26,3 +26,34 @@ pictures_controllerのshowにコメント作成と一覧表示できるよう、
 
 index.js.erb JS形式のview
 blogs/show.html.erbでid=comments_areaとで定義したdivの中を書き換えるjQueryを記述
+編集、削除も作る
+
+🧡Ajax フォロー機能
+中間テーブル作る
+$ rails g model relationship follower_id:integer followed_id:integer
+
+マイグレーションファイルに追記
+  add_index :relationships, :follower_id => Relationshipモデルからは頻繁にユーザーを検索するから、インデックス追加。
+  add_index :relationships, :followed_id
+  add_index :relationships, [:follower_id, :followed_id], unique: true => 複合キーインデックス/同じ組み合わせで保存されないように
+
+$ rails db:migrate
+
+モデルにアソシエーション追記
+(app/models/user.rb)
+has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
+has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship', dependent: :destroy
+relationshipテーブルのレコードを全件取得
+=> Userモデルは多くのactive_relationships(自分がフォローしている人）を持ち、それはfollower_idによってRelationshipモデルに関連づけられる。
+=> Userモデルは多くのpassive_relationships(自分のフォロワー）を持ち、それはfollowed_idによってRelationshipモデルに関連づけられる。
+class_name: 'Relationship で、モデル指定。しないと、has_namyの直後のActiveRelationshipモデルを探してしまう
+
+has_many :following, through: :active_relationships, source: :followed
+has_many :followers, through: :passive_relationships, source: :follower
+relationshipsテーブルを通って、以下が誰なのか？を取得
+following：自分がフォローしているユーザ
+followers：自分をフォローしているユーザ
+
+(app/models/relationship.rb)
+belongs_to :followed, class_name: "User"
+belongs_to :follower, class_name: "User"
