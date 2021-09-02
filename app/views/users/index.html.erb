@@ -1,0 +1,7 @@
+ <h2>Users</h2>
+  <% @users.each do |user| %>
+    <p>☻<%= user.name %></p>
+    <!---フォローボタンのパーシャル _follow_form.html.erb --->
+    <%= render 'follow_form', user: user %>
+    <br> 
+  <% end %>

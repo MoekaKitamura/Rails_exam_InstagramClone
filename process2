@@ -57,3 +57,16 @@ followers：自分をフォローしているユーザ
 (app/models/relationship.rb)
 belongs_to :followed, class_name: "User"
 belongs_to :follower, class_name: "User"
+
+- ユーザー一覧ページを作成する。
+- ユーザー一覧ページのそれぞれのユーザーにフォローボタンを用意する。
+- フォローボタンを押すと、フォローアクションを実行する。
+- フォローアクションで、relationshipテーブルにフォロー関係が保存される。
+- フォローすると、フォローしている人一覧にフォローした人が表示される。
+
+フォロー関係を作成するcreateアクションと削除するdestroyアクションへのroutingを作成
+resources :relationships, only: [:create, :destroy]
+
+$ rails g controller Relationships create destroy
+
+users#indexに、フォロー用のパーシャル relationshipのcreateアクションが起動するボタン

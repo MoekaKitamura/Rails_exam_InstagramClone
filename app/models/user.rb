@@ -15,4 +15,19 @@ class User < ApplicationRecord
     validates :password, presence: true, length: { minimum: 6 }
     
     mount_uploader :image_name, IconUploader
+
+    #指定のユーザをフォローする
+    def follow!(other_user)
+        active_relationships.create!(followed_id: other_user.id)
+    end
+
+    #指定のユーザのフォローを解除する
+    def unfollow!(other_user)
+        active_relationships.find_by(followed_id: other_user.id).destroy
+    end
+
+    #フォローしているかどうかを確認する
+    def following?(other_user)
+        active_relationships.find_by(followed_id: other_user.id)
+    end
 end

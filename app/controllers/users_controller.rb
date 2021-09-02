@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy favorite ]
   skip_before_action :login_required, only: [:new, :create]
   before_action :already_logged_in, only: [:new, :create]
+
+  def index
+    @users = User.all
+  end
+  
   def show
   end
 
