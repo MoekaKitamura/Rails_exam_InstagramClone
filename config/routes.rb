@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       get :favorite
     end
+    resources :comments
   end
   resources :users, except: [:index] do
     member do

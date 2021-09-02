@@ -1,0 +1,25 @@
+Ajax コメント機能
+
+ルーティング追加
+resources :pictures do
+    resources :comments
+  end
+これで写真投稿にネストされたルーティング作成
+ex)new_picture_comment GET /pictures/:picture_id/comments/new(.:format) comments#new
+
+投稿とコメントは１対多
+$ rails g model Comment picture:references content:text
+$ rails db:migrate
+アソシエーションbelongs_to, has_many、バリデーション
+
+$ rails g controller comments create
+不要ルーティング削除
+
+コントローラーはcreateアクション
+respond_toメソッド
+HTMLのリクエストはformat.html（local: true）=> index.html.erbを探しにいく
+JavaScriptのリクエストはformat.js（remote: true)デフォルト => index.js.erbを探しにいく
+
+投稿詳細ページ編集
+コメント一覧と、コメント入力フォームをパーシャル化！
+pictures_controllerのshowにコメント作成と一覧表示できるよう、追加
