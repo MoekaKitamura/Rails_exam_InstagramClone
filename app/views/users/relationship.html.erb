@@ -14,8 +14,10 @@
   <td colspan="2">followers</td>
   <% @followers.each do |user| %>
   <tr>
-    <td><%= user.name %>
-    <%= link_to "👀", user_path(user.id)%></td>
+    <td>
+      <%= link_to user.name, user %>
+      <%= link_to '💌', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
+    </td>
     <!---フォローボタンのパーシャル _follow_form.html.erb --->
     <td><%= render 'follow_form', user: user %></td>
   </tr>

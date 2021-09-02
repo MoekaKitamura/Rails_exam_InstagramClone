@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
   root 'users#new'
   resources :sessions, only: [:new, :create, :destroy]
   
@@ -21,6 +19,10 @@ Rails.application.routes.draw do
     member do
       get :relationship
     end
+  end
+
+  resources :conversations do
+    resources :messages
   end
 
   resources :favorites, only: [:create, :destroy]

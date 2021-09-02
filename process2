@@ -70,3 +70,29 @@ resources :relationships, only: [:create, :destroy]
 $ rails g controller Relationships create destroy
 
 users#indexに、フォロー用のパーシャル relationshipのcreateアクションが起動するボタン
+
+🧡Ajax 1対1のメッセージ機能
+- テキスト形式で会話（メッセージのやり取り）ができる
+- 会話を取っている相手間でのみ情報が公開される
+- 会話を取っている相手間のメンバー毎に「会話ひとつ」が定義される
+
+- ユーザ一覧、あるいはユーザ個別の画面からメッセージ画面を表示できる
+- メッセージ画面では相手と自分の名前が表示される
+- メッセージ画面には個々のメッセージの発言者と内容が時系列で表示される
+- メッセージ一覧リンクから過去に自分がやりとりしたメッセージすべてを見ることができる
+
+users : ユーザ情報
+conversations : 会話情報（チャットルーム）index,create
+messages : 会話の個々のメッセージ index,create
+
+$ rails g controller Conversations
+$ rails g controller Messages
+$ rails g model Conversation sender_id:integer recipient_id:integer
+$ rails g model Message body:text conversation:references user:references read:boolean
+ 🚨booleanの時は、default: false をつけてnilにならないように
+
+resources :conversations do
+  resources :messages
+end
+(conversations内にmessagesがネスト)
+
