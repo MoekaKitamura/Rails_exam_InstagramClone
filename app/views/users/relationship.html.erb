@@ -3,8 +3,11 @@
   <td colspan="2">following</td>
   <% @following.each do |user| %>
   <tr>
-    <td><%= user.name %>
-    <%= link_to "👀", user_path(user.id)%></td>
+    <td>
+      <%= image_tag user.image_name.url , class: "icon" %>
+      <%= link_to user.name, user %>
+      <%= link_to '💌', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
+    </td>
     <!---フォローボタンのパーシャル _follow_form.html.erb --->
     <td><%= render 'follow_form', user: user %></td>
   </tr>
@@ -15,6 +18,7 @@
   <% @followers.each do |user| %>
   <tr>
     <td>
+      <%= image_tag user.image_name.url , class: "icon" %>
       <%= link_to user.name, user %>
       <%= link_to '💌', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
     </td>
