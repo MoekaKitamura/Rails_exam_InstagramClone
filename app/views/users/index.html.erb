@@ -1,0 +1,14 @@
+ <h1>Users</h1>
+ <table>
+  <% @users.each do |user| %>
+  <tr>
+    <td>
+      <%= image_tag user.image_name.url , class: "icon" %>
+      <%= link_to user.name, user %>
+      <%= link_to '💌', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
+    </td>
+    <!---フォローボタンのパーシャル _follow_form.html.erb --->
+    <td><%= render 'follow_form', user: user %></td>
+  </tr>
+  <% end %>
+  </table> 

@@ -1,0 +1,98 @@
+🧡Ajax コメント機能
+
+ルーティング追加
+resources :pictures do
+    resources :comments
+  end
+これで写真投稿にネストされたルーティング作成
+ex)new_picture_comment GET /pictures/:picture_id/comments/new(.:format) comments#new
+
+投稿とコメントは１対多
+$ rails g model Comment picture:references content:text
+$ rails db:migrate
+アソシエーションbelongs_to, has_many、バリデーション
+
+$ rails g controller comments create
+不要ルーティング削除
+
+コントローラーはcreateアクション
+respond_toメソッド
+HTMLのリクエストはformat.html（local: true）=> index.html.erbを探しにいく
+JavaScriptのリクエストはformat.js（remote: true)デフォルト => index.js.erbを探しにいく
+
+投稿詳細ページ編集
+コメント一覧と、コメント入力フォームをパーシャル化！
+pictures_controllerのshowにコメント作成と一覧表示できるよう、追加
+
+index.js.erb JS形式のview
+blogs/show.html.erbでid=comments_areaとで定義したdivの中を書き換えるjQueryを記述
+編集、削除も作る
+
+🧡Ajax フォロー機能
+中間テーブル作る
+$ rails g model relationship follower_id:integer followed_id:integer
+
+マイグレーションファイルに追記
+  add_index :relationships, :follower_id => Relationshipモデルからは頻繁にユーザーを検索するから、インデックス追加。
+  add_index :relationships, :followed_id
+  add_index :relationships, [:follower_id, :followed_id], unique: true => 複合キーインデックス/同じ組み合わせで保存されないように
+
+$ rails db:migrate
+
+モデルにアソシエーション追記
+(app/models/user.rb)
+has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
+has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship', dependent: :destroy
+relationshipテーブルのレコードを全件取得
+=> Userモデルは多くのactive_relationships(自分がフォローしている人）を持ち、それはfollower_idによってRelationshipモデルに関連づけられる。
+=> Userモデルは多くのpassive_relationships(自分のフォロワー）を持ち、それはfollowed_idによってRelationshipモデルに関連づけられる。
+class_name: 'Relationship で、モデル指定。しないと、has_namyの直後のActiveRelationshipモデルを探してしまう
+
+has_many :following, through: :active_relationships, source: :followed
+has_many :followers, through: :passive_relationships, source: :follower
+relationshipsテーブルを通って、以下が誰なのか？を取得
+following：自分がフォローしているユーザ
+followers：自分をフォローしているユーザ
+
+(app/models/relationship.rb)
+belongs_to :followed, class_name: "User"
+belongs_to :follower, class_name: "User"
+
+- ユーザー一覧ページを作成する。
+- ユーザー一覧ページのそれぞれのユーザーにフォローボタンを用意する。
+- フォローボタンを押すと、フォローアクションを実行する。
+- フォローアクションで、relationshipテーブルにフォロー関係が保存される。
+- フォローすると、フォローしている人一覧にフォローした人が表示される。
+
+フォロー関係を作成するcreateアクションと削除するdestroyアクションへのroutingを作成
+resources :relationships, only: [:create, :destroy]
+
+$ rails g controller Relationships create destroy
+
+users#indexに、フォロー用のパーシャル relationshipのcreateアクションが起動するボタン
+
+🧡Ajax 1対1のメッセージ機能
+- テキスト形式で会話（メッセージのやり取り）ができる
+- 会話を取っている相手間でのみ情報が公開される
+- 会話を取っている相手間のメンバー毎に「会話ひとつ」が定義される
+
+- ユーザ一覧、あるいはユーザ個別の画面からメッセージ画面を表示できる
+- メッセージ画面では相手と自分の名前が表示される
+- メッセージ画面には個々のメッセージの発言者と内容が時系列で表示される
+- メッセージ一覧リンクから過去に自分がやりとりしたメッセージすべてを見ることができる
+
+users : ユーザ情報
+conversations : 会話情報（チャットルーム）index,create
+messages : 会話の個々のメッセージ index,create
+
+$ rails g controller Conversations
+$ rails g controller Messages
+$ rails g model Conversation sender_id:integer recipient_id:integer
+$ rails g model Message body:text conversation:references user:references read:boolean
+ 🚨booleanの時は、default: false をつけてnilにならないように
+
+resources :conversations do
+  resources :messages
+end
+(conversations内にmessagesがネスト)
+

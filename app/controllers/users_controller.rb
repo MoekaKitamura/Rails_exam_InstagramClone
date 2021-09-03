@@ -1,8 +1,15 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy favorite ]
+  before_action :set_user, only: %i[ show edit update destroy favorite relationship]
   skip_before_action :login_required, only: [:new, :create]
   before_action :already_logged_in, only: [:new, :create]
+
+  def index
+    @users = User.all
+  end
+
   def show
+    @following = @user.following
+    @followers = @user.followers
   end
 
   def new
@@ -10,6 +17,11 @@ class UsersController < ApplicationController
   end
   def favorite
     
+  end
+
+  def relationship
+    @following = @user.following
+    @followers = @user.followers
   end
 
   def edit
