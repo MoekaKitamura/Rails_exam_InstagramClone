@@ -52,7 +52,7 @@
     <%= link_to edit_picture_path(@picture) do %>
     <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
     <% end %> |
-    <%= link_to @picture, method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <%= button_to @picture, method: :delete do %>
     <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
     <% end %>
   </p>
